@@ -22,8 +22,19 @@
 		<br />
 		<br />
 		Length: <?php echo strlen($third); ?>
+		<br />
 		Trim: <?php echo "A".trim(" BCD ")."E"; ?>
-		Find: <?php echo strstr(); ?>
+		<br />
+		Find: <?php echo strstr($third, "fox"); ?>
+		<br />
+		Replace: <?php echo str_replace("brown", "black", $third); ?>
+		<br />
+		SubString: <?php echo substr($third, 10, 20); ?>
+		<br />
+		Find Position: <?php echo strpos($third, "brown"); ?>
+		<br />
+		Find Character: <?php echo strchr($third, "z"); ?>
+		<br />
 	</body>
 </html>
 		
