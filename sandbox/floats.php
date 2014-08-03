@@ -15,10 +15,14 @@
 	<br />
 	<?php $integer=3; ?>
 	<?php echo "Is {$integer} Integer?"." ".is_int($integer); ?><br />
-	<?php echo "Is {$float} Float?".is_float($float); ?><br />
+	<?php echo "Is {$float} Float?"." ".is_float($float); ?><br />
 	<hr />
-	<?php echo "Is {$integer} Float?".is_float($integer); ?><br />
-	<?php echo "Is {$float} Integer?".is_int($float); ?><br />
+	<?php echo "Is {$integer} Float?"." ".is_float($integer); ?><br />
+	<?php echo "Is {$float} Integer?"." ".is_int($float); ?><br />
+	<hr />
+	<?php echo "Is {$integer} numeric?"." ".is_numeric($integer); ?><br />
+	<?php echo "Is {$float} numeric?"." ".is_numeric($float); ?><br />
 	<br />
+	
 </body>
 </html>
