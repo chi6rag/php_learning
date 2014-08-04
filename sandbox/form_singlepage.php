@@ -7,30 +7,24 @@
 			background-color: #A30000;
 		}
 		input {
-			height: 50px;
-			width: 450px;
+			height: 60px;
+			width: 240px;
 			border: 0px solid;
-			padding: 20px;
+			padding: 5px;
 			font-family: sans-serif;
 			margin: 0 auto;
 			font-size: 24px;
 			font-weight: 0;
 			color: gray;
-			border-radius: 2px;
 		}
 		#submit input{
-			
+			height: 30px;
 			width: 120px;
-			font-size: 20px;
-			text-align: center;
-			vertical-align: middle;
-			line-height: 10px;
+			font-size: 12px;
 		}
 		.submit-form {
-			margin-top: 150px;
+			margin-top: 200px;
 			text-align: center;
-			padding: 20px;
-
 		}
 
 		</style>
