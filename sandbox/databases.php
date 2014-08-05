@@ -1,62 +1,51 @@
 <?php
-	/*// 1. Create a database connection
-	//phpinfo();
-	$host = "localhost";
-	$dbuser = "widget_cms";
-	$password = "secretpassword";
-	$dbname = "widget_corp";
-	$connection = mysqli_connect($host, $dbuser, $password, $dbname);
-	if(mysqli_connect_errno()){
-		die("Database connection failed " . mysqli_connect_error() . "(" . mysqli_connect_errno() . ")"
-		);
-	}
-	// 2. Perform database query
-	$query = "SELECT * FROM subjects";
-	$result = mysqli_query($connection, $query);
-
-	// Test if there is query error
-	if (!$result) die("Database Query Failed");
-
-	// 3. Return data if any
-	while($row = mysqli_fetch_row($result)){
-		print_r($row);
-	}*/
-
-	// 1. Connect to the database
+	// 1. Connecting to the database
 	$host = "localhost";
 	$db_username = "widget_cms";
-	$db_password = "secretpassword";
+	$db_pass = "secretpassword";
 	$db_name = "widget_corp";
-	$database = mysqli_connect($host, $db_username, $db_password, $db_name);
+	$database = mysqli_connect($host,$db_username,$db_pass,$db_name);
 
-	// 1:Optional, Testing connection
-	if(mysqli_errno($database)){
-		die("Connection Died. Database failed to connect. ERROR: XYZ_CHIRAG");
+	// Optional: Testing Connection
+	if(mysqli_connect_error()){
+		echo mysqli_connect_error();
 	}
 
-	// 2. Fire Query and store resource
+	// 2. Firing Queries and Storing Resources
 	$query  = "SELECT * FROM subjects ";
 	$resource = mysqli_query($database, $query);
 
-	// 3. Use results obtained to operate
-	while( $row = mysqli_fetch_row($resource) ){
-		print_r($row);
+	// 3. Fetch information from the resource and operate on the information
+ 	//while($assoc = mysqli_fetch_assoc($resource)){
+	// 	echo "ID: {$assoc["id"]}<br />";
+	// 	echo "Menu Name: {$assoc["menu_name"]}<br />";
+	// 	echo "Position: {$assoc["position"]}<br />";
+	// 	echo "Visible: {$assoc["visible"]}<br /><hr />";
+	// }
+
+	
+	for( ;$standard_array = mysqli_fetch_row($resource); ){
+		for($var = 0; $var < sizeof($standard_array); $var++){
+			echo "{$standard_array[$var]}<br />";
+		}
+		echo "<hr />";
 	}
 
-	// 4. Free resources
+	// 4. Free disk space
 	mysqli_free_result($resource);
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Databases</title>
+	<title>Databases: Practice</title>
 </head>
 <body>
-	<?php
-		if ( isset($database) ) echo "Connection made<br />";
-	?>
+<?php
+?>
 </body>
 </html>
+
 <?php
+	// 5. Closing connection
 	mysqli_close($database);
-?>
+	?>
