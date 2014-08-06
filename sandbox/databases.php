@@ -12,7 +12,11 @@
 	}
 
 	// 2. Firing Queries and Storing Resources
-	$query  = "SELECT * FROM subjects ";
+	$menu_name = "";
+	$position = "";
+	$visible = "";
+	$query  = "INSERT INTO subjects() ";
+	$query .= "";
 	$resource = mysqli_query($database, $query);
 
 	// 3. Fetch information from the resource and operate on the information
