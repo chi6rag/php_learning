@@ -14,13 +14,16 @@
 	}
 
 	// 2. Firing Queries and Storing resources
-	 $query  = "DELETE FROM subjects ";
-	 $query .= "WHERE menu_name='chirag_menu'";
+	$menu_name = "Chirag's Choices";
+	$menu_name = mysqli_real_escape_string($db_link, $menu_name);
+	$position = 5;
+	$visible = 1;
+	$query  = "INSERT INTO subjects(menu_name, position, visible)";
+	$query .= "VALUES('{$menu_name}', {$position}, {$visible});";
 	$resource = mysqli_query($db_link, $query);
-
-	echo $resource . "<br />";
-
-	$resource = mysqli_query($db_link, "SELECT * FROM subjects");
+	echo "{$resource}" . "<br />";
+	$query  = "SELECT * FROM subjects";
+	$resource = mysqli_query($db_link, $query);
 	while($row_assoc = mysqli_fetch_assoc($resource)){
 		print_r($row_assoc);
 		echo("<br />");
@@ -35,3 +38,7 @@
 
 </body>
 </html>
+<?php
+	// 5. Closing Database
+	mysqli_close($db_link);
+?>
