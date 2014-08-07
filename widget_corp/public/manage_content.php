@@ -17,11 +17,7 @@
 					while( $assoc_subjects = mysqli_fetch_assoc($resource_subjects) ){
 				?>
 				<li>
-					<?php
-						echo $assoc_subjects["menu_name"];
-					?>
-					
-					<!-- Error Prone Starts -->
+					<a href="manage_content.php?subject=<?php echo urlencode($assoc_subjects["menu_name"]); ?>"><?php echo $assoc_subjects["menu_name"]; ?></a>
 					<ul class="pages">
 						<?php
 							// 2. Firing queries - Selecting pages from database
@@ -32,15 +28,10 @@
 							while( $assoc_pages = mysqli_fetch_assoc($resource_pages) ){
 						?>
 						<li>
-							<?php
-								echo "{$assoc_pages["menu_name"]}";
-								}
-							
-							?>
+							<a href="manage_content.php?page=<?php echo urlencode($assoc_pages["menu_name"]); ?>"><?php echo "{$assoc_pages["menu_name"]}"; } ?></a>
 						</li>
 
 					</ul>
-					<!-- Error Prone Ends -->
 				</li>
 				<?php
 					}
