@@ -10,9 +10,7 @@
 			<ul class="subjects">
 				<?php
 					// 2. Firing queries - Selecting subjects from database
-					$query = "SELECT * FROM subjects WHERE visible=1; ";
-					$resource_subjects = mysqli_query($connection, $query);
-					check_query($resource_subjects);
+					$resource_subjects = find_all_subjects();
 				?>
 				<?php
 					// 3. Fetching and using information from the resource
@@ -27,9 +25,7 @@
 					<ul class="pages">
 						<?php
 							// 2. Firing queries - Selecting pages from database
-							$query = "SELECT * FROM pages WHERE visible=1 AND subject_id={$assoc_subjects["id"]}";
-							$resource_pages = mysqli_query($connection, $query);
-							check_query($resource_pages);
+							$resource_pages = find_pages_by_subject_id($assoc_subjects["id"]);
 						?>
 						<?php
 							// 3. Fetching and using information from the resource
