@@ -55,3 +55,9 @@ li a:hover {
 	height: 100px;
 	width: 100%;
 }
+
+.selected {
+	font-weight: bold;
+	text-decoration: underline;
+}
+

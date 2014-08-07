@@ -18,8 +18,11 @@
 					while( $assoc_subjects = mysqli_fetch_assoc($resource_subjects) ){
 				?>
 				<li>
-					<a href="manage_content.php?subject=<?php echo urlencode($assoc_subjects["id"]); ?>"><?php echo $assoc_subjects["menu_name"]; ?></a>
-					<ul class="pages">
+					<a href="manage_content.php?subject=<?php echo urlencode($assoc_subjects["id"]); ?>">
+						<?php echo $assoc_subjects["menu_name"];
+						?>
+					</a>
+					<ul class="pages" class="selected">
 						<?php
 							// 2. Firing queries - Selecting pages from database
 							$resource_pages = find_pages_by_subject_id($assoc_subjects["id"]);
