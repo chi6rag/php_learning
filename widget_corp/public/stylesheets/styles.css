@@ -23,7 +23,15 @@ body {
 	float: left;
 	height: 800px;
 	width: 20%;
-	border-right: 1px solid rgb(69,69,62);;
+	border-right: 1px solid ;
+}
+li a {
+	text-decoration: none;
+	color: rgb(69,69,62);
+}
+li a:hover {
+	text-decoration: underline;
+	color: rgb(49,49,42);
 }
 .content {
 	height: 70%;
@@ -35,6 +43,9 @@ body {
 .content a {
 
 	color: #54455a;
+}
+.content p {
+	font-weight: 300;
 }
 .footer {
 	position: relative;

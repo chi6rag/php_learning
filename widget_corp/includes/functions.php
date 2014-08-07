@@ -2,8 +2,9 @@
 	// Checking is query is right
 		function check_query($resource){
 			if( !isset($resource) ){
-			die("Resource extraction failed");
+				die("Resource extraction failed");
 			}
+			
 		}
 
 		function find_all_subjects(){
