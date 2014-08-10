@@ -1,0 +1,77 @@
+html {
+	height: 100%; width: 100%;
+}
+body {
+	height: 100%; width: 100%;
+	padding: 0; border: 0; margin: 0;
+	font-family: Muli, sans-serif;
+	font-size: 13px; line-height: 15px;
+	background-color: white;
+}
+img {
+	border: none;
+}
+a {
+	color: #3C4663;
+}
+a:hover {
+	color: #1F2433;
+}
+.header {
+	height: 70px;
+	padding: 0; margin: 0; text-align: left;
+	background-color: #3C4663; color: white;
+}
+.header h1 {
+	padding: 14px; margin: 0;
+	text-align: center;
+	font-size: 30px;
+}
+.main {
+	height: 600px; width: 100%;
+	margin: 0; padding: 0;
+	background: #FFFFFF;
+}
+.footer {
+	clear: both;
+	height: 2em; margin: 0; padding: 1em;
+	text-align: center;
+	background: #1F2433;
+	color: white;
+}
+
+/* Navigation */
+.navigation {
+	float: left;
+	height: 100%; width: 150px;
+	margin: 0; padding: 0 2em;
+	background-color: #D1D4DB; color: #3C4663;
+}
+.navigation a {
+	color: #3C4663; text-decoration: none;
+}
+.navigation a:hover { 
+	color: #1F2433;
+}
+ul.subjects {
+	margin: 1em 0; padding-left: 0; list-style: none;
+}
+ul.pages {
+		padding-left: 2em; list-style: square;
+}
+.selected {
+	font-weight: 400;
+}
+
+/* Page Content */
+.page {
+	float: left; height: 100%;
+	padding-left: 2em; vertical-align: top;
+	background: white;
+}
+.page h2 {
+	color: #1F2433; margin-top: 1em;
+}
+.page h3 {
+	color: 1F2433;
+}
