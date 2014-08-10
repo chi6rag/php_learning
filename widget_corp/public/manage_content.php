@@ -8,16 +8,13 @@
 		<ul class="subjects">
 			<?php
 				// 2.a Firing query and preparing resource_subjects
-				$query = "SELECT * FROM subjects WHERE visible=1;";
-				$resource_subjects = mysqli_query($connection, $query);
-				mysqli_check_resource($resource_subjects);
+				$resource_subjects = get_all_subjects();
 			?>
 			<?php 	  // 3.a Fetching resource_subjects and using information ?>
 			<?php     while( $subjects_assoc = mysqli_fetch_assoc($resource_subjects) ){ ?>
 			<li><?php 		echo "{$subjects_assoc["menu_name"]}";
 							// 2.b Firing query and preparing resource_pages
-							$query = "SELECT * FROM pages WHERE subject_id={$subjects_assoc["id"]};";
-							$resource_pages = mysqli_query($connection, $query);
+							$resource_pages = get_pages_by_subject_id($subjects_assoc["id"]);
 				?>
 				<ul class="pages">
 					<?php 		//3.b Fetching resource_pages and using information ?>
