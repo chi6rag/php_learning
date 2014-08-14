@@ -3,29 +3,25 @@
 	require_once("../includes/functions.php");
 ?>
 <?php
-	if( isset($_GET["subject"]) ){
-		$selected_subject_id = $_GET["subject"];
-		$selected_page_id = null;
-	}elseif( isset($_GET["page"]) ){
-		$selected_subject_id = null;
-		$selected_page_id = $_GET["page"];
-	}else{
-		$selected_subject_id = null;
-		$selected_page_id = null;
-	}
+	find_selection();
 ?>
 <?php include("../includes/layout/header.php"); ?>
 <div class="main">
 	<div class="navigation">
 		<?php
-			echo navigation($selected_subject_id, $selected_page_id);
+			echo navigation($subjects_assoc, $pages_assoc);
 		?>
 	</div>
 	<div class="page">
-		<h2>Manage Content</h2>
 		<?php
-			echo "Subject ID: {$selected_subject_id}<br />";
-			echo "Page ID: {$selected_page_id}";
+			if($subjects_assoc){
+				echo "<h2>Manage Subject</h2>";
+				echo "Menu Name: {$subjects_assoc["menu_name"]}";
+			}elseif($pages_assoc){
+				echo "<h2>Manage Page</h2>";
+				echo "Menu Name: {$pages_assoc["menu_name"]}";
+			}else{
+			}
 		?>
 	</div> 
 </div>

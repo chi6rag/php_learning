@@ -20,14 +20,14 @@
 		return $resource_pages;
 	}
 
-	function navigation($selected_subject_id, $selected_page_id){
+	function navigation($subjects_array, $pages_array){
 		$output = "<ul class=\"subjects\">";
 		// 2.a Firing query and preparing resource_subjects
 		$resource_subjects = get_all_subjects();
 		// 3.a Fetching resource_subjects and using information
 		while( $subjects_assoc = mysqli_fetch_assoc($resource_subjects) ){
 			$output .= "<li ";
-			if( $subjects_assoc["id"] == $selected_subject_id ){
+			if( $subjects_array && $subjects_assoc["id"] == $subjects_array["id"] ){
 				$output .= "class=\"selected\"";
 			}
 			$output .= ">";
@@ -43,7 +43,7 @@
 			//3.b Fetching resource_pages and using information
 			while( $pages_assoc = mysqli_fetch_assoc($resource_pages) ){ 
 				$output .= "<li ";
-				if( $selected_page_id == $pages_assoc["id"]){
+				if( $pages_array && $pages_assoc["id"] == $pages_array["id"] ){
 					$output .= "class=\"selected\"";
 				}
 				$output .= ">";
@@ -61,4 +61,45 @@
 		return $output;
 	}
 
+	function find_subject_by_id($selected_subject_id){
+		global $connection;
+		$safe_selected_subject_id = mysqli_real_escape_string($connection, $selected_subject_id);
+		$query = "SELECT * FROM subjects WHERE id={$safe_selected_subject_id}";
+		$resource = mysqli_query($connection, $query);
+		mysqli_check_resource($resource);		
+		if( $subjects_assoc = mysqli_fetch_assoc($resource) ){
+			return $subjects_assoc;
+		}else{
+			return null;
+		}
+	}
+
+	function find_page_by_id($selected_page_id){
+		global $connection;
+		$safe_selected_page_id = mysqli_real_escape_string($connection, $selected_page_id);
+		$query = "SELECT * FROM pages WHERE id={$safe_selected_page_id}";
+		$resource = mysqli_query($connection, $query);
+		mysqli_check_resource($resource);
+		
+		if( $pages_assoc = mysqli_fetch_assoc($resource) ){
+			return $pages_assoc;
+		}else{
+			return null;
+		}
+	}
+
+	function find_selection(){
+		global $subjects_assoc;
+		global $pages_assoc;
+		if( isset($_GET["subject"]) ){
+			$subjects_assoc = find_subject_by_id($_GET["subject"]);
+			$pages_assoc = null;
+		}elseif( isset($_GET["page"]) ){
+			$pages_assoc = find_page_by_id($_GET["page"]);
+			$subjects_assoc = null;
+		}else{ 
+			$subjects_assoc = null;
+			$pages_assoc = null;
+		}
+	}
 ?>
