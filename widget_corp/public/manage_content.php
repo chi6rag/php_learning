@@ -11,6 +11,7 @@
 		<?php
 			echo navigation($subjects_assoc, $pages_assoc);
 		?>
+		<a href="new_subject.php">+ Add a subject</a>
 	</div>
 	<div class="page">
 		<?php
