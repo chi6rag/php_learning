@@ -14,6 +14,35 @@
 		redirect_to("manage_content.php");
 	}
 ?>
+<?php
+	if( isset($_POST["submit"]) ){
+		// Prepare and fire query
+		$id = $subjects_assoc["id"];
+		$menu_name = $_POST["menu_name"];
+		$menu_name = mysqli_real_escape_string($connection, $menu_name);
+		$position = (int) $_POST["position"];
+		$visible = (int) $_POST["visible"];
+		$query  = "UPDATE subjects SET ";
+		$query .= "menu_name = '{$menu_name}', ";
+		$query .= "position = {$position}, ";
+		$query .= "visible = {$visible} ";
+		$query .= "WHERE id={$id} ";
+		$query .= "LIMIT 1;";
+		$resource = mysqli_query($connection, $query);
+
+		// Testing
+		if( $resource && mysqli_affected_rows($connection) == 1 ){
+			$_SESSION["message"] = "Subject Updated";
+			redirect_to("manage_content.php");
+		}else{
+			$_SESSION["message"] = "Subject Update Failed";
+			//redirect_to("new_subject.php");
+		}
+	}else{
+		// If create_subject.php is a GET request without posting the form
+		// redirect_to("new_subject.php");
+	}
+?>
 <?php include("../includes/layout/header.php"); ?>
 <div class="main">
 	<div class="navigation">
@@ -27,7 +56,7 @@
 			echo session_message();
 		?>
 		<h2>Edit Subject: <?php echo $subjects_assoc["menu_name"]; ?></h2>
-		<form action="create_subject.php" method="post">
+		<form action="edit_subject.php?subject=<?php echo $subjects_assoc["id"]; ?>" method="post">
 			<p>
 				Menu name: 
 				<input type="text" name="menu_name" value="<?php echo $subjects_assoc["menu_name"]; ?>">
@@ -57,6 +86,27 @@
 		</form>
 		<br />
 		<a href="manage_content.php">Cancel</a>
+		&nbsp;
+		&nbsp;
+		<a href="delete_subject.php?subject=<?php echo $subjects_assoc["id"]; ?>">Delete</a>
+		
 	</div> 
 </div>
 <?php include("../includes/layout/footer.php"); ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

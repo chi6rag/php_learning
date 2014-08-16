@@ -8,8 +8,8 @@
 		// Prepare and fire query
 		$menu_name = $_POST["menu_name"];
 		$menu_name = mysqli_real_escape_string($connection, $menu_name);
-		$position = $_POST["position"];
-		$visible = $_POST["visible"];
+		$position = (int) $_POST["position"];
+		$visible = (int) $_POST["visible"];
 		$query  = "INSERT INTO subjects(menu_name, position, visible) ";
 		$query .= "VALUES('{$menu_name}', $position, $visible)";
 		$resource = mysqli_query($connection, $query);
