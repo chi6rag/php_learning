@@ -12,7 +12,7 @@
 		redirect_to("manage_content.php");
 	}
 
-	$pages_set = get_pages_by_subject_id($current_subject["id"]);
+	$pages_set = get_pages_by_subject_id($current_subject["id"], false);
 	if( mysqli_num_rows($pages_set)>0 ){
 		$_SESSION["message"] = "Pages associated with subject. Deletion Failed";
 		redirect_to("edit_subject.php?subject={$current_subject['id']}");

@@ -1,5 +1,8 @@
-<?php require_once("../includes/layout/header.php"); ?>
-<?php require_once("../includes/functions.php"); ?>
+<?php
+	$layout_context = "admin";
+	require_once("../includes/layout/header.php");
+	require_once("../includes/functions.php");
+?>
 <div class="main">
 	<div class="navigation">
 	</div>

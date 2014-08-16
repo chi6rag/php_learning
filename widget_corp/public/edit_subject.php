@@ -5,7 +5,7 @@
 ?>
 <?php
 	find_selection();
-
+	$layout_context = "admin";
 	// Check if subject id exists
 	if(!$subjects_assoc){
 		redirect_to("manage_content.php");
@@ -44,7 +44,7 @@
 <div class="main">
 	<div class="navigation">
 		<?php
-			echo navigation($subjects_assoc, $pages_assoc);
+			echo navigation($subjects_assoc, $pages_assoc, false);
 		?>
 		<a href="new_subject.php">+ Add a subject</a>
 	</div>
@@ -62,7 +62,7 @@
 				Position:
 				<select name="position">
 					<?php
-						$subjects_set = get_all_subjects();
+						$subjects_set = get_all_subjects(false);
 						$subject_count = mysqli_num_rows($subjects_set)+1;
 						for($count=1; $count<=$subject_count; $count++){
 							echo "<option value=\"{$count}\"";

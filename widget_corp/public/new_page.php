@@ -5,6 +5,7 @@
 ?>
 <?php
 	find_selection(); // returns $subjects_assoc, $pages_assoc in global scope // Do Not Delete
+	$layout_context = "admin";
 ?>
 <?php
 	if( isset($_POST["submit"]) ){
@@ -35,7 +36,7 @@
 	
 	<div class="navigation">
 		<?php
-			echo navigation($subjects_assoc, $pages_assoc);
+			echo navigation($subjects_assoc, $pages_assoc, false);
 		?>
 		<a href="new_subject.php">+ Add a subject</a>
 	</div> <!-- Navigation ends here -->
@@ -60,7 +61,7 @@
 				Position:
 				<select name="position">
 					<?php
-						$pages_assoc = get_pages_by_subject_id($_GET["subject_id"]);
+						$pages_assoc = get_pages_by_subject_id($_GET["subject_id"], false);
 						$pages_count = mysqli_num_rows($pages_assoc)+1;
 						for($count=1; $count<=$pages_count; $count++){
 							echo "<option value={$count}>{$count}</option>";

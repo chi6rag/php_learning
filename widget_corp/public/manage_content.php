@@ -5,6 +5,7 @@
 ?>
 <?php
 	find_selection();
+	$layout_context = "admin";
 ?>
 <?php include("../includes/layout/header.php"); ?>
 <div class="main">
@@ -13,7 +14,7 @@
 		<a href="admin.php">&laquo; Main Menu</a>
 		<br />
 		<?php
-			echo navigation($subjects_assoc, $pages_assoc);
+			echo navigation($subjects_assoc, $pages_assoc, false);
 		?>
 		<a href="new_subject.php">+ Add a subject</a>
 	</div>
@@ -32,7 +33,7 @@
 				echo "<a href=\"edit_subject.php?subject={$subjects_assoc["id"]}\">Edit Subject</a>";
 				echo  "<br /><br /><br /><hr /><br />";
 				echo "<h2>Pages in " . htmlentities($subjects_assoc["menu_name"]) . "</h2>";
-				$page_resource = get_pages_by_subject_id($subjects_assoc["id"]);
+				$page_resource = get_pages_by_subject_id($subjects_assoc["id"], false);
 				while( $pages_assoc = mysqli_fetch_assoc($page_resource) ){
 					echo $pages_assoc["menu_name"] . "<br />";
 				}

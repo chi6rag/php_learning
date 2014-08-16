@@ -6,6 +6,7 @@
 <?php
 	find_selection();
 	// Check if page id exists
+	$layout_context = "admin";
 	if(!$pages_assoc){
 		redirect_to("manage_content.php");
 	}
@@ -13,20 +14,21 @@
 <?php
 	if( isset($_POST["submit"]) ){
 		// Prepare and fire query
-		$id = $pages_assoc["id"];
+		$id = $_GET["page"];
 		$menu_name = $_POST["menu_name"];
 		$menu_name = mysqli_real_escape_string($connection, $menu_name);
 		$subject_id = $_POST["subject_id"];
 		$position = (int) $_POST["position"];
 		$visible = (int) $_POST["visible"];
 		$content = htmlspecialchars($_POST["content"]);
+		$content = mysqli_real_escape_string($connection, $content);
 		// echo "{$menu_name}<br />{$subject_id}<br />{$position}<br />{$visible}<br />{$content}";
 		$query  = "UPDATE pages SET ";
 		$query .= "menu_name = '{$menu_name}', ";
 		$query .= "position = {$position}, ";
 		$query .= "visible = {$visible}, ";
 		$query .= "content = '{$content}' ";
-		$query .= "WHERE subject_id={$subject_id} & id={$id} ";
+		$query .= "WHERE id={$id};";
 		//$query .= "LIMIT 1;";
 		$resource = mysqli_query($connection, $query);
 
@@ -47,7 +49,7 @@
 <div class="main">
 	<div class="navigation">
 		<?php
-			echo navigation($subjects_assoc, $pages_assoc);
+			echo navigation($subjects_assoc, $pages_assoc, false);
 		?>
 		<a href="new_subject.php">+ Add a subject</a>
 	</div>
@@ -71,7 +73,7 @@
 				Position:
 				<select name="position">
 					<?php
-						$pages_set = get_pages_by_subject_id( $pages_assoc["subject_id"] );
+						$pages_set = get_pages_by_subject_id( $pages_assoc["subject_id"], false);
 						$pages_count = mysqli_num_rows($pages_set);
 						for($count=1; $count<=$pages_count; $count++){
 							echo "<option value=\"{$count}\"";
