@@ -30,6 +30,14 @@
 				echo $subjects_assoc["visible"]==1 ? 'yes' : 'no';
 				echo "<br />";
 				echo "<a href=\"edit_subject.php?subject={$subjects_assoc["id"]}\">Edit Subject</a>";
+				echo  "<br /><br /><br /><hr /><br />";
+				echo "<h2>Pages in " . htmlentities($subjects_assoc["menu_name"]) . "</h2>";
+				$page_resource = get_pages_by_subject_id($subjects_assoc["id"]);
+				while( $pages_assoc = mysqli_fetch_assoc($page_resource) ){
+					echo $pages_assoc["menu_name"] . "<br />";
+				}
+				echo "<br />";
+				echo "<a href=\"new_page.php?subject_id={$subjects_assoc["id"]}\">+ Add a new page</a>";
 			}elseif($pages_assoc){
 				echo "<h2>Manage Page</h2>";
 				echo "Menu Name: " . htmlentities($pages_assoc["menu_name"]) . "<br />";
