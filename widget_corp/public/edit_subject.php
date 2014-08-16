@@ -1,7 +1,4 @@
 <?php
-	
-?>
-<?php
 	include("../includes/session.php");
 	require_once("../includes/database_connection.php");
 	require_once("../includes/functions.php");

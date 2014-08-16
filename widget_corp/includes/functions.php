@@ -34,7 +34,7 @@
 			$output .= "<a href=\"manage_content.php?subject=";
 			$output .= urlencode($subjects_assoc["id"]);
 			$output .= "\">";
-			$output .= $subjects_assoc["menu_name"];
+			$output .= htmlentities($subjects_assoc["menu_name"]);
 			$output .= "</a>";
 			
 			// 2.b Firing query and preparing resource_pages
@@ -50,7 +50,7 @@
 				$output .= "<a href=\"manage_content.php?page=";
 				$output .= urlencode($pages_assoc["id"]);
 				$output .= "\">";
-				$output .= $pages_assoc["menu_name"];
+				$output .= htmlentities($pages_assoc["menu_name"]);
 				$output .= "</a></li>";
 			}
 			$output .= "</ul></li>";

@@ -9,6 +9,9 @@
 <?php include("../includes/layout/header.php"); ?>
 <div class="main">
 	<div class="navigation">
+		<br />
+		<a href="admin.php">&laquo; Main Menu</a>
+		<br />
 		<?php
 			echo navigation($subjects_assoc, $pages_assoc);
 		?>
@@ -21,11 +24,22 @@
 		<?php
 			if($subjects_assoc){
 				echo "<h2>Manage Subject</h2>";
-				echo "Menu Name: {$subjects_assoc["menu_name"]}<br />";
+				echo "Menu Name: " . htmlentities($subjects_assoc["menu_name"]) . "<br />";
+				echo "Position: " . $subjects_assoc["position"] . "<br />";
+				echo "Visible: ";
+				echo $subjects_assoc["visible"]==1 ? 'yes' : 'no';
+				echo "<br />";
 				echo "<a href=\"edit_subject.php?subject={$subjects_assoc["id"]}\">Edit Subject</a>";
 			}elseif($pages_assoc){
 				echo "<h2>Manage Page</h2>";
-				echo "Menu Name: {$pages_assoc["menu_name"]}<br />";
+				echo "Menu Name: " . htmlentities($pages_assoc["menu_name"]) . "<br />";
+				echo "Position: " . $pages_assoc["position"] . "<br />";
+				echo "Visible: ";
+				echo $pages_assoc["visible"]==1 ? 'yes' : 'no';
+				echo "<br />";
+				echo "<div class=\"view-content\">";
+				echo "Content: " . htmlentities($pages_assoc["content"]) . "<br />";
+				echo "</div>";
 				echo "<a href=\"edit_page.php?page={$pages_assoc["id"]}\">Edit Page</a>";
 			}else{
 				echo "<h2>Manage Content</h2>";

@@ -80,3 +80,7 @@ ul.pages {
 	border: 1px solid red; padding: 10px; margin: 10px;
 	color: red; font-weight: bold;
 }
+
+.view-content {
+	padding: 20px; border: 1px solid #1F2433; margin: 10px; margin-left: 0px;
+}
