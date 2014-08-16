@@ -102,4 +102,10 @@
 			$pages_assoc = null;
 		}
 	}
+
+	function redirect_to($new_location){
+		header("Location: " . $new_location);
+		exit;
+	}
+
 ?>

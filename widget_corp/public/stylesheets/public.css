@@ -75,3 +75,8 @@ ul.pages {
 .page h3 {
 	color: #1F2433;
 }
+
+.session {
+	border: 1px solid red; padding: 10px; margin: 10px;
+	color: red; font-weight: bold;
+}
