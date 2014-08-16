@@ -17,10 +17,11 @@
 	<div class="page">
 		<?php
 			if( $pages_assoc ){
-				echo "{$pages_assoc["menu_name"]}: {$pages_assoc["content"]}";
+				echo "<p><h2>{$pages_assoc["menu_name"]}</h2>" . nl2br(htmlentities($pages_assoc["content"])) . "</p>";
+			}else{
+				echo "<p>Welcome</p>";
 			}
 		?>
 	</div>
 </div>
 <?php include("../includes/layout/footer.php"); ?>
-  

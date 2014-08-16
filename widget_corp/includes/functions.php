@@ -173,7 +173,7 @@
 			$subjects_assoc = null;
 		}else{ 
 			$subjects_assoc = null;
-			$pages_assoc = find_default_page_for_subject(1);
+			$pages_assoc = null;
 		}
 	}
 
