@@ -16,12 +16,8 @@
 	</div>
 	<div class="page">
 		<?php
-			if( $subjects_assoc ){
-				echo "{$subjects_assoc["menu_name"]}";
-			}elseif( $pages_assoc ){
+			if( $pages_assoc ){
 				echo "{$pages_assoc["menu_name"]}: {$pages_assoc["content"]}";
-			}else{
-				echo "Please select a subject or a page";
 			}
 		?>
 	</div>

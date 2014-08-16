@@ -153,18 +153,27 @@
 		}
 	}
 
+	function find_default_page_for_subject($subject_id){
+		$page_set = get_pages_by_subject_id($subject_id, false);
+		if( $pages_assoc = mysqli_fetch_assoc($page_set) ){
+			return $pages_assoc;
+		}else{
+			return null;
+		}
+	}
+
 	function find_selection(){
 		global $subjects_assoc;
 		global $pages_assoc;
 		if( isset($_GET["subject"]) ){
 			$subjects_assoc = find_subject_by_id($_GET["subject"]);
-			$pages_assoc = null;
+			$pages_assoc = find_default_page_for_subject($_GET["subject"]);
 		}elseif( isset($_GET["page"]) ){
 			$pages_assoc = find_page_by_id($_GET["page"]);
 			$subjects_assoc = null;
 		}else{ 
 			$subjects_assoc = null;
-			$pages_assoc = null;
+			$pages_assoc = find_default_page_for_subject(1);
 		}
 	}
 
